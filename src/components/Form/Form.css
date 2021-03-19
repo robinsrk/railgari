@@ -1,0 +1,31 @@
+.form {
+  border: 1px solid white;
+  color: white;
+  background-color: #383c4a;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.input {
+  margin: 8px;
+  background: #282a36;
+  border-radius: 20px;
+  padding: 10px;
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-title {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.submit-button {
+  border-radius: 20px;
+}

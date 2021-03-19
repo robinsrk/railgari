@@ -1,0 +1,23 @@
+import React from "react";
+import train from "../../images/train-black.png";
+import background from "../../images/background.png";
+import "./Home.css";
+const Home = () => {
+  return (
+      <div className="homepage" style={{ backgroundImage: `url(${background})`. backgroundRepeat: 'no-repeat' }}>
+      <header className="header">
+        <div>
+          <img className="header-image" alt="" src={train} />
+        </div>
+        <div className="header-link">
+          <li>Home</li>
+          <li>Destination</li>
+          <li>Blog</li>
+          <li>Contact</li>
+          <li className="login-button">Login</li>
+        </div>
+      </header>
+    </div>
+  );
+};
+export default Home;

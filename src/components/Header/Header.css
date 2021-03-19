@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.header-link {
+  display: flex;
+  color: white;
+  float: left;
+  align-items: center;
+  text-decoration: none;
+  list-style: none;
+}
+.header li {
+  margin: 20px;
+  cursor: pointer;
+}
+
+.login-button {
+  border-radius: 40px;
+  color: red;
+}
+.navbar-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-items li a {
+  list-style: none;
+  text-decoration: none;
+  color: white;
+  padding: 5px;
+}
+
+a {
+  text-decoration: none;
+}
