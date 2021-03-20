@@ -21,8 +21,14 @@ function App() {
             <PrivateRoute path="/destination">
               <Destination></Destination>
             </PrivateRoute>
+            <PrivateRoute path="/destination/:id">
+              <Destination></Destination>
+            </PrivateRoute>
             <Route path="/login">
               <Login></Login>
+            </Route>
+            <Route path="/">
+              <Home></Home>
             </Route>
           </Switch>
         </Router>

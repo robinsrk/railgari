@@ -14,13 +14,9 @@
   padding: auto;
   display: flex;
   flex-direction: column;
-  background-color: #383c4a;
   margin: 10px;
   border: 10px solid #282a36;
   border-radius: 20px;
-}
-
-MDBRow {
 }
 
 .ticket-title {
@@ -29,6 +25,7 @@ MDBRow {
   min-height: 100px;
 }
 .ticket-price {
+  margin-top: 50px;
   font-weight: 600;
   font-size: 30px;
 }

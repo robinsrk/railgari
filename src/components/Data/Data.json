@@ -3,24 +3,24 @@
     "id": 1,
     "Name": "ONE TIME TICKET",
     "Price": 37,
-    "Photo": "http://dummyimage.com/184x222.png/cc0000/ffffff"
+    "Photo": "https://i.ibb.co/WVrbfCk/Group-33144.png"
   },
   {
     "id": 2,
     "Name": "ONE DAY PASS",
     "Price": 34,
-    "Photo": "http://dummyimage.com/132x130.jpg/5fa2dd/ffffff"
+    "Photo": "https://i.ibb.co/n6wQg7y/Group-33145.png"
   },
   {
     "id": 3,
     "Name": "MONTHLY PASS",
     "Price": 35,
-    "Photo": "http://dummyimage.com/244x150.jpg/ff4444/ffffff"
+    "Photo": "https://i.ibb.co/qpnRJtr/Group-33142.png"
   },
   {
     "id": 4,
     "Name": "ANNUAL PASS",
     "Price": 8,
-    "Photo": "http://dummyimage.com/155x114.jpg/dddddd/000000"
+    "Photo": "https://i.ibb.co/QHn7Ttw/Group-33143.png"
   }
 ]

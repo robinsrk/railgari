@@ -28,6 +28,16 @@ const Form = () => {
     password: "",
   });
 
+  const handleSubmit = (event) => {
+    console.log("hello world");
+  };
+  const handleBlur = (event) => {
+    let isFieldValid = true;
+    console.log(event.target.name, event.target.value);
+    if (event.target.name === "email") {
+      isFieldValid = /\S+@\S+.\S+/.test(event.target.value);
+    }
+  };
   const handleGoogleSignIn = () => {
     firebase
       .auth()
@@ -64,6 +74,7 @@ const Form = () => {
         };
         setUser(signedInUser);
         setLoggedInUser(signedInUser);
+        history.replace(from);
       })
       .catch((error) => {
         alert(error.message);
@@ -83,7 +94,7 @@ const Form = () => {
   };
   return (
     <MDBContainer className="mt-5 mb-5 pt-5 pb-5 form align-items-center">
-      <form action="">
+      <form onSubmit={handleSubmit}>
         {user.newUser ? (
           <p className="form-title">Sign up</p>
         ) : (
@@ -92,29 +103,29 @@ const Form = () => {
         {user.newUser && (
           <input
             className="input"
+            onBlur={handleBlur}
             name="name"
+            required
             type="text"
             placeholder="Enter your name"
           />
         )}
         <input
           className="input"
+          onBlur={handleBlur}
           name="email"
           type="email"
+          required
           placeholder="Enter your email"
         />
         <input
           className="input"
+          onBlur={handleBlur}
           name="password"
           type="password"
+          required
           placeholder="Enter your password"
         />
-        {/* <input */}
-        {/*   className="submit-button" */}
-        {/*   name="submit" */}
-        {/*   type="submit" */}
-        {/*   value="Submit" */}
-        {/* /> */}
         <MDBBtn outline className="submit-button" type="submit">
           {user.newUser ? <p>Sig nup</p> : <p>Sign in</p>}
         </MDBBtn>
