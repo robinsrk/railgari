@@ -10,8 +10,6 @@ import { useHistory } from "react-router-dom";
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
-// import firebaseConfig from "./Firebase.config";
-// firebase.initializeApp(firebaseConfig);
 const Form = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
@@ -75,7 +73,6 @@ const Form = () => {
   };
   const handleBlur = (event) => {
     let isFieldValid = true;
-    console.log(event.target.name, event.target.value);
     if (event.target.name === "email") {
       isFieldValid = /\S+@\S+.\S+/.test(event.target.value);
     }

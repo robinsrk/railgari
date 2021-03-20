@@ -1,20 +1,13 @@
 import React, { useContext, useState } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../images/image.png";
 import "./Header.css";
 import {
   MDBNavbar,
   MDBNavbarBrand,
   MDBNavbarNav,
-  MDBNavItem,
-  MDBNavLink,
   MDBNavbarToggler,
   MDBCollapse,
-  MDBFormInline,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
 } from "mdbreact";
 import { UserContext } from "../../App";
 const Header = () => {
@@ -23,7 +16,6 @@ const Header = () => {
   const toggleCollapse = () => {
     setIsOpen(!isOpen);
   };
-  console.log(loggedInUser);
   return (
     <div>
       <MDBNavbar dark expand="md">

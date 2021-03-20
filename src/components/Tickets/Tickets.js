@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import data from "../Data/Data.json";
 import { MDBIcon, MDBBtn, MDBRow, MDBCol } from "mdbreact";
 import "./Tickets.css";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../App";
 const Tickets = () => {
-  const [ticket, setTicket] = useContext(UserContext);
   const handleBuy = (id) => {
     console.log(id);
   };
