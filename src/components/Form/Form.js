@@ -25,6 +25,7 @@ const Form = () => {
     email: "",
     photo: "",
     password: "",
+    confirm: "",
   });
 
   const updateUserName = (name) => {
@@ -52,22 +53,26 @@ const Form = () => {
           history.replace(from);
         });
     } else if (!user.newUser && user.email && user.password) {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(user.email, user.password)
-        .then((result) => {
-          const { displayName, photoURL, email } = result.user;
-          const signedInUser = {
-            isSignedIn: true,
-            newUser: false,
-            name: displayName,
-            email: email,
-            photo: photoURL,
-          };
-          setUser(signedInUser);
-          setLoggedInUser(signedInUser);
-          history.replace(from);
-        });
+      if (user.confirm === user.password) {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(user.email, user.password)
+          .then((result) => {
+            const { displayName, photoURL, email } = result.user;
+            const signedInUser = {
+              isSignedIn: true,
+              newUser: false,
+              name: displayName,
+              email: email,
+              photo: photoURL,
+            };
+            setUser(signedInUser);
+            setLoggedInUser(signedInUser);
+            history.replace(from);
+          });
+      } else {
+        alert("Password doesn't match");
+      }
     }
     event.preventDefault();
   };
@@ -79,10 +84,15 @@ const Form = () => {
     if (event.target.name === "password") {
       isFieldValid = /\d{1}/.test(event.target.value);
     }
+    if (event.target.name === "confirm") {
+      isFieldValid = user.password === event.target.value;
+    }
     if (isFieldValid) {
       const newUserInfo = { ...user };
       newUserInfo[event.target.name] = event.target.value;
       setUser(newUserInfo);
+    } else {
+      isFieldValid = false;
     }
   };
   const handleGoogleSignIn = () => {
@@ -173,11 +183,30 @@ const Form = () => {
           required
           placeholder="Enter your password"
         />
+        {user.newUser && (
+          <input
+            className="input"
+            onBlur={handleBlur}
+            name="confirm"
+            type="password"
+            placeholder="Confirm password"
+            required
+          />
+        )}
         <MDBBtn outline className="submit-button" type="submit">
-          {user.newUser ? <p>Sig nup</p> : <p>Sign in</p>}
+          {user.newUser ? <p>Sign up</p> : <p>Sign in</p>}
         </MDBBtn>
       </form>
-      <p onClick={handleNewUserButton}>New user?</p>
+      <p>
+        New user?
+        <span
+          className="ml-2"
+          onClick={handleNewUserButton}
+          style={{ color: "grey", cursor: "pointer" }}
+        >
+          <u>click here</u>
+        </span>
+      </p>
       <div>
         <MDBBtn onClick={handleGoogleSignIn} color="deep-orange">
           <MDBIcon
