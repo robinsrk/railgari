@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import logo from "../../images/image.png";
 import "./Header.css";
 import {
   MDBNavbar,
@@ -27,6 +28,7 @@ const Header = () => {
     <div>
       <MDBNavbar dark expand="md">
         <MDBNavbarBrand>
+          <img alt="" src={logo} style={{ width: "40px" }} />
           <strong className="white-text">RailGari</strong>
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={toggleCollapse} />

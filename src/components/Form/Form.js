@@ -14,6 +14,7 @@ if (!firebase.apps.length) {
 // firebase.initializeApp(firebaseConfig);
 const Form = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
   const history = useHistory();
   const location = useLocation();
   const { from } = location.state || { from: { pathname: "/" } };
@@ -28,14 +29,63 @@ const Form = () => {
     password: "",
   });
 
+  const updateUserName = (name) => {
+    const user = firebase.auth().currentUser;
+    user.updateProfile({
+      displayName: name,
+    });
+  };
   const handleSubmit = (event) => {
-    console.log("hello world");
+    if (user.newUser && user.email && user.password) {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(user.email, user.password)
+        .then(() => {
+          updateUserName(user.name);
+          const signedInUser = {
+            isSignedIn: true,
+            newUser: false,
+            name: user.name,
+            email: user.email,
+            photo: user.photoURL,
+          };
+          setUser(signedInUser);
+          setLoggedInUser(signedInUser);
+          history.replace(from);
+        });
+    } else if (!user.newUser && user.email && user.password) {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(user.email, user.password)
+        .then((result) => {
+          const { displayName, photoURL, email } = result.user;
+          const signedInUser = {
+            isSignedIn: true,
+            newUser: false,
+            name: displayName,
+            email: email,
+            photo: photoURL,
+          };
+          setUser(signedInUser);
+          setLoggedInUser(signedInUser);
+          history.replace(from);
+        });
+    }
+    event.preventDefault();
   };
   const handleBlur = (event) => {
     let isFieldValid = true;
     console.log(event.target.name, event.target.value);
     if (event.target.name === "email") {
       isFieldValid = /\S+@\S+.\S+/.test(event.target.value);
+    }
+    if (event.target.name === "password") {
+      isFieldValid = /\d{1}/.test(event.target.value);
+    }
+    if (isFieldValid) {
+      const newUserInfo = { ...user };
+      newUserInfo[event.target.name] = event.target.value;
+      setUser(newUserInfo);
     }
   };
   const handleGoogleSignIn = () => {

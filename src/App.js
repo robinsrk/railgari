@@ -10,6 +10,8 @@ import Destination from "./components/Destination/Destination";
 export const UserContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
+  const [ticket, setTicket] = useState(0);
+
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <div className="home" style={{ backgroundColor: "#282a36" }}>
@@ -21,7 +23,7 @@ function App() {
             <PrivateRoute path="/destination">
               <Destination></Destination>
             </PrivateRoute>
-            <PrivateRoute path="/destination/:id">
+            <PrivateRoute path="/destination/:key">
               <Destination></Destination>
             </PrivateRoute>
             <Route path="/login">
